@@ -1,7 +1,3 @@
-
-execute pathogen#infect()
-
-
 set nocompatible              " be iMproved, required
 filetype plugin indent on    " required
 inoremap jj <ESC>
@@ -30,10 +26,10 @@ nmap <CR> o<Esc>
 
 filetype plugin indent on 
 syntax on 
-colorscheme monokai
 set encoding=utf-8
 set number
 set tabstop=4
 set shiftwidth=4
 set expandtab
 inoremap <C-w> <C-o>dw
+set visualbell
