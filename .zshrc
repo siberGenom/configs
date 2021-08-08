@@ -80,3 +80,4 @@ alias l="ls -lah"
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias reload="source ~/.zshrc"
+export EDITOR='vim'
