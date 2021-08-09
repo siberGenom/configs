@@ -26,6 +26,7 @@ nmap <CR> o<Esc>
 
 filetype plugin indent on 
 syntax on 
+colorscheme zenburn
 set encoding=utf-8
 set number
 set tabstop=4
