@@ -83,4 +83,4 @@ alias reload="source ~/.zshrc"
 export EDITOR='vim'
 
 # fzf replace reverse search etc
-source /usr/share/doc/fzf/examples/key-bindings.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
