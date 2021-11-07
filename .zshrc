@@ -79,6 +79,8 @@ alias l="ls -lah"
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias reload="source ~/.zshrc"
+alias doc="docker"
+alias com="docker-compose"
 export EDITOR='vim'
 
 # fzf replace reverse search etc
