@@ -75,7 +75,6 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # custom
-cd ~
 alias l="ls -lah"
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
@@ -84,3 +83,9 @@ export EDITOR='vim'
 
 # fzf replace reverse search etc
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#asdf for oh my zsh
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+ autoload -Uz compinit && compinit
