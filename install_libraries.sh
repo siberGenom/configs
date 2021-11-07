@@ -1,5 +1,5 @@
 sudo apt-get update
-sudo apt-get install git vim tmux zsh curl xclip gnome-shell-extensions-gpaste gpaste -y
+sudo apt-get install curl wget git vim tmux zsh curl xclip gnome-shell-extensions-gpaste gpaste -y
 
 # install zsh & ohmyzsh
 chsh -s $(which zsh)
