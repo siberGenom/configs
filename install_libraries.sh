@@ -1,5 +1,5 @@
 sudo apt-get update
-sudo apt-get install curl wget git vim tmux zsh curl xclip gnome-shell-extensions-gpaste gpaste -y
+sudo apt-get install curl npm nodejs wget git vim tmux zsh curl xclip gnome-shell-extensions-gpaste gpaste -y
 
 # install zsh & ohmyzsh
 chsh -s $(which zsh)
@@ -21,3 +21,7 @@ sudo rm -r Zenburn
 #fzf fuzzy finder
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+# asdf
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
+
