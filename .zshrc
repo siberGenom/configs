@@ -2,93 +2,109 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/loz/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+
 ZSH_THEME="af-magic"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+plugins=(asdf)
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+#add code to path
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+source "$HOME/.oh-my-zsh/oh-my-zsh.sh"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# custom bins
+export PATH=$PATH:/Users/laurenceolsensmith/.local/share/bin
 
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf)
-
-source $ZSH/oh-my-zsh.sh
-
-# custom
-alias l="ls -lah"
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
-alias reload="source ~/.zshrc"
-alias doc="docker"
-alias com="docker-compose"
 export EDITOR='vim'
 
 # fzf replace reverse search etc
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#asdf for oh my zsh
+# direnv
+eval "$(direnv hook zsh)"
+
+# asdf for oh my zsh
+. $HOME/.asdf/asdf.sh
+
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
+
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
+
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
+#system
+export EDITOR="/usr/bin/vim"
+alias reload="source ~/.zshrc"
+
+#ruby, rails, rbenv, rack
+## source "/etc/profile.d/rvm.sh"
+alias be='bundle exec'
+
+# kubectl
+alias k="kubectl"
+
+#autocomplete on kubectl
+complete -F __start_kubectl k
+
+# general
+alias l="ls -lah"
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
+alias tmuxrc="vim ~/configs/.tmux.conf"
+alias reload="source ~/.zshrc"
+alias tmuxrs="vim ~/.config/tmuxinator/rs.yml"
+
+# kubectl
+alias kgp="kubectl get pods"
+alias kgpw="watch -t -n1 kubectl get pods"
+alias kl="kubectl logs -f"
+alias kgi="kubectl get ingresses"
+alias kgs="kubectl get services"
+alias kcuc="kubectl config use-context"
+alias kcsc="kubectl config set-context --current"
+alias kcv="kubectl config view"
+alias kxc="kubectl exec -it"
+alias kd="kubectl describe"
+alias kcn="kubectl get namespace"
+alias kpfss="kubectl port-forward -n secret-store secret-store-vault-0 8200:8200"
+
+#docker
+alias com="docker-compose"
+alias doc="docker"
+alias docstop="doc stop $(doc ps -aq)"
+alias cud="com up -d"
+alias cuf="com up -d; com logs -f"
+alias cdcu="com down;com up -d;"
+alias cdcuf="com down;com up -d; com logs -f"
+alias doc_networks="docker inspect -f '{{range $key, $value := .NetworkSettings.Networks}}{{$key}} {{end}}'"
+alias doc_containers="docker network inspect -f '{{range .Containers}}{{.Name}} {{end}}'"
+
+#dirs
+alias cdoc="cd ~/Documents"
+alias cdown="cd ~/Downloads"
+alias cdoc="cd ~/Documents"
+
+#git
+alias gd="git diff"
+alias gc="git commit -m"
+alias gl="git log"
+alias gst="git status"
+alias gau="git add --update"
+alias gcam="git commit -am"
+alias gco="git checkout"
+alias gcob="git checkout -b"
+alias gp="git push"
+alias grc="git rebase --continue"
 
