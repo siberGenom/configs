@@ -1,6 +1,6 @@
-set nocompatible              " be iMproved, required
-filetype on                 " required
-filetype plugin indent on    " required
+set nocompatible
+filetype on
+filetype plugin indent 
 syntax on 
 colorscheme zenburn
 set encoding=utf-8
@@ -11,9 +11,12 @@ set expandtab
 set visualbell
 
 " l - undo
-" y - insert
-noremap d g
-noremap e k
+" u - insert
+" y - insert newline below
+" Y - insert newline above
+" j - yank
+" jj - yank line
+
 noremap f e
 noremap g t
 noremap j y
@@ -41,10 +44,21 @@ noremap T F
 noremap U I
 noremap Y O
 
+"navigation
 noremap n h
 noremap e j
 noremap i k
 noremap o l
 
+"top + bottom
 noremap dd gg
+noremap D g
+
+"copy + paste
+noremap jj yy
 noremap ; p
+
+"pane nav
+nnoremap <C-n> <C-w><C-h>
+nnoremap <C-o> <C-w><C-l>
+
