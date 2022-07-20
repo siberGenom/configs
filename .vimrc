@@ -52,7 +52,7 @@ noremap o l
 
 "top + bottom
 noremap dd gg
-noremap D g
+noremap D G
 
 "copy + paste
 noremap jj yy
