@@ -65,6 +65,8 @@ alias vimrc="vim ~/.vimrc"
 alias tmuxrc="vim ~/configs/.tmux.conf"
 alias reload="source ~/.zshrc"
 alias tmuxrs="vim ~/.config/tmuxinator/rs.yml"
+alias switch_kb_qwerty="rm ~/.vimrc; ln -s ~/configs/.vimrc_qwerty  ~/.vimrc "
+alias switch_kb_cole="rm ~/.vimrc; ln -s ~/configs/.vimrc_colemak ~/.vimrc "
 
 # kubectl
 alias kgp="kubectl get pods"
