@@ -62,3 +62,7 @@ noremap ; p
 nnoremap <C-n> <C-w><C-h>
 nnoremap <C-o> <C-w><C-l>
 
+"insert newline staying in normal mode
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>
+

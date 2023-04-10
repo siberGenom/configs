@@ -14,8 +14,7 @@ ZSH_THEME="af-magic"
 plugins=(asdf)
 
 #add code to path
-code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
-
+# code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 source "$HOME/.oh-my-zsh/oh-my-zsh.sh"
 
 # custom bins
@@ -27,10 +26,11 @@ export EDITOR='vim'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # direnv
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
 
 # asdf for oh my zsh
 . $HOME/.asdf/asdf.sh
+
 
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
@@ -55,18 +55,24 @@ alias be='bundle exec'
 # kubectl
 alias k="kubectl"
 
+#direnv
+eval "$(direnv hook zsh)"
+
 #autocomplete on kubectl
-complete -F __start_kubectl k
+# complete -F __start_kubectl k
 
 # general
 alias l="ls -lah"
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
-alias tmuxrc="vim ~/configs/.tmux.conf"
+alias tmuxrc="vim ~/.tmux.conf"
 alias reload="source ~/.zshrc"
-alias tmuxrs="vim ~/.config/tmuxinator/rs.yml"
-alias switch_kb_qwerty="rm ~/.vimrc; ln -s ~/configs/.vimrc_qwerty  ~/.vimrc "
-alias switch_kb_cole="rm ~/.vimrc; ln -s ~/configs/.vimrc_colemak ~/.vimrc "
+alias tmuxrs="vim ~/.config/tmuxinator/tf.yml"
+alias switch_kb_qwerty="rm ~/.vimrc; ln -s ~/configs/.vimrc_qwerty  ~/.vimrc; rm ~/.tmux.conf; ln -s ~/configs/.tmux.conf_qwerty  ~/.tmux.conf; "
+alias switch_kb_cole="rm ~/.vimrc; ln -s ~/configs/.vimrc_colemak ~/.vimrc; rm ~/.tmux.conf; ln -s ~/configs/.tmux.conf_colemak ~/.tmux.conf "
+alias arst="asdf"
+alias xopen="xdg-open"
+alias pbcopy="xclip -sel clip"
 
 # kubectl
 alias kgp="kubectl get pods"
@@ -109,4 +115,5 @@ alias gco="git checkout"
 alias gcob="git checkout -b"
 alias gp="git push"
 alias grc="git rebase --continue"
+
 
