@@ -1,27 +1,39 @@
 sudo apt-get update
-sudo apt-get install curl npm nodejs wget git vim tmux zsh curl xclip gnome-shell-extensions-gpaste gpaste -y
 
 # install zsh & ohmyzsh
+sudo apt install zsh -y
 chsh -s $(which zsh)
-# need to log in & log out
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-cp .vimrc $HOME
-cp .tmux.conf $HOME
-cp .zshrc $HOME
-
-mkdir .vim
-mkdir .vim/colors
-
-# install zenburn
-git clone https://github.com/jnurmine/Zenburn.git 
-mv Zenburn/colors/zenburn.vim ~/.vim/colors
-sudo rm -r Zenburn
+# zshrc, tmux, vimrc
+sudo ln -s $HOME/configs/.zshrc $HOME/.zshrc
+sudo ln -s $HOME/configs/.vimrc $HOME/.vimrc_colemak
+sudo ln -s $HOME/configs/.tmux.conf $HOME/.tmux.conf_colemak
 
 #fzf fuzzy finder
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
-# asdf
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
+# docker
+sudo apt remove docker docker-engine docker.io containerd runc
+sudo apt install -y \
+    ca-certificates \
+    curl \
+    gnupg
+sudo mkdir -m 0755 -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo docker run hello-world
 
+# nginx
+sudo apt install nginx
+sudo ufw allow 'Nginx Full'
+sudo systemctl status nginx
+
+# general
+sudo apt install direnv
