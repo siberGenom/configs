@@ -88,7 +88,7 @@ alias kcn="kubectl get namespace"
 alias kpfss="kubectl port-forward -n secret-store secret-store-vault-0 8200:8200"
 
 #docker
-alias com="docker-compose"
+alias com="docker compose"
 alias doc="docker"
 alias docstop="doc stop $(doc ps -aq)"
 alias cud="com up -d"

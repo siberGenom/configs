@@ -3,12 +3,13 @@ sudo apt-get update
 # install zsh & ohmyzsh
 sudo apt install zsh -y
 chsh -s $(which zsh)
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# need to run:
+# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # zshrc, tmux, vimrc
 sudo ln -s $HOME/configs/.zshrc $HOME/.zshrc
-sudo ln -s $HOME/configs/.vimrc $HOME/.vimrc_colemak
-sudo ln -s $HOME/configs/.tmux.conf $HOME/.tmux.conf_colemak
+sudo ln -s $HOME/configs/.vimrc_colemak $HOME/.vimrc
+sudo ln -s $HOME/configs/.tmux.conf_colemak $HOME/.tmux.conf
 
 #fzf fuzzy finder
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
